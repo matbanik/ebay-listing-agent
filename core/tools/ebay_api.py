@@ -46,9 +46,10 @@ from pathlib import Path
 import requests
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from account_config import DEFAULT_PIPELINE, POLICY_KEYS, account_path, account_problems, load_account  # noqa: E402
+from account_config import (DEFAULT_PIPELINE, POLICY_KEYS, account_path, account_problems,  # noqa: E402
+                            load_account, workspace_root)
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = workspace_root()  # .env, token cache and listings/ (EBAY_WORKSPACE, else the repo root)
 ENV_FILE = ROOT / ".env"
 TOKEN_CACHE = ROOT / ".ebay-token-cache.json"
 LISTINGS = ROOT / "listings"

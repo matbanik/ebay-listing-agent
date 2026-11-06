@@ -1,18 +1,18 @@
 # Manifest
 
-Every file in `core/` and what it does. Copy all of `core/` into a new repository; nothing outside it is needed at run time. Each file below marked *synced* comes from the private source repo through `scripts/sync.py`. Files marked *authored* belong to this package. See `UPDATE-CHECKLIST.md`.
+Every file in `core/` and what it does. Copy all of `core/` into a new repository, or run it in place with your data in a separate folder (`EBAY_WORKSPACE`, see `SETUP.md`). Nothing outside `core/` is needed at run time.
 
 ## Entry points
 
-| File | Origin | Purpose |
-|---|---|---|
-| `AGENTS.md` | synced | Agent instructions: commands, skills, workflows, roles, boundaries (Always / Ask First / Never). Read first by any agent harness |
-| `CLAUDE.md` | authored | One line (`@AGENTS.md`) so Claude Code loads AGENTS.md |
-| `SETUP.md` | synced | Fresh clone to a working pipeline: install, `.env`, `ebay_api.py setup` → `account.json`, checks |
-| `requirements.txt` | synced | Python dependencies |
-| `.env.example` | synced | Credential variable names with placeholder values. Copy to `.env` (gitignored) |
-| `account.example.json` | synced | Shape of `account.json` with dummy IDs. The real file is written by `ebay_api.py setup` and gitignored |
-| `.gitignore` | authored | Keeps credentials, seller IDs, photos, listing folders, backups and logs out of git |
+| File | Purpose |
+|---|---|
+| `AGENTS.md` | Agent instructions: commands, skills, workflows, roles, boundaries (Always / Ask First / Never). Read first by any agent harness |
+| `CLAUDE.md` | One line (`@AGENTS.md`) so Claude Code loads AGENTS.md |
+| `SETUP.md` | Fresh clone to a working pipeline: install, `.env`, `ebay_api.py setup` → `account.json`, checks |
+| `requirements.txt` | Python dependencies |
+| `.env.example` | Credential variable names with placeholder values. Copy to `.env` (gitignored) |
+| `account.example.json` | Shape of `account.json` with dummy IDs. The real file is written by `ebay_api.py setup` and gitignored |
+| `.gitignore` | Keeps credentials, seller IDs, photos, listing folders, backups and logs out of git |
 
 ## Tools (`tools/`)
 
@@ -73,8 +73,8 @@ Every file in `core/` and what it does. Copy all of `core/` into a new repositor
 | File | Purpose |
 |---|---|
 | `tests/test_ebay_api.py` | Unit tests for the API client, setup, gates and validator, with a fake HTTP session and no network. Run `python -m pytest tests/ -q` |
-| `.agent/context/current-focus.md` | authored seed: what the agent is working on now |
-| `.agent/context/known-issues.md` | authored seed: problems found and their workarounds |
+| `.agent/context/current-focus.md` | Seed: what the agent is working on now |
+| `.agent/context/known-issues.md` | Seed: problems found and their workarounds |
 | `listings/.gitkeep`, `listings/archive/.gitkeep`, `raw_data/.gitkeep`, `backups/.gitkeep` | Empty working folders. Their contents are gitignored |
 
 ## Not included, on purpose
@@ -82,5 +82,5 @@ Every file in `core/` and what it does. Copy all of `core/` into a new repositor
 - **Real listings, photos and reports:** listing photos can carry GPS data, and the folders hold seller-specific data. `examples/` (outside `core/`) has one synthetic listing instead.
 - **`.env`, `account.json`, token caches, `api-log.jsonl`:** credentials and seller IDs. Each adopter creates their own.
 - **`research/`:** deep-research outputs written before `ebay_api.py` existed. Only the prompts ship, in `docs/research-prompts/`.
-- **`archive/`:** retired scripts from the source repo.
-- **Session state** (`.agent/context/` in the source): replaced by the empty seeds above.
+- **`archive/`:** retired scripts from the maintainer's original setup.
+- **Session state** (the maintainer's `.agent/context/`): replaced by the empty seeds above.

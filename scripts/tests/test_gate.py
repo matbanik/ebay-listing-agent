@@ -1,4 +1,4 @@
-"""Tests for the package scripts: the privacy gate, refcheck and the sync ledger.
+"""Tests for the package scripts: the privacy gate, and refcheck.
 
     python -m pytest scripts/tests -q
 """
@@ -11,7 +11,6 @@ import pytest
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import refcheck  # noqa: E402
 import sanitize  # noqa: E402
-import sync  # noqa: E402
 
 
 def test_selftest_every_check_can_fail():
@@ -71,20 +70,3 @@ def test_refcheck_resolution(tmp_path):
     failures = refcheck.check(tmp_path, refcheck.shipped_files(tmp_path))
     assert failures == ["README.md: link target not found: core/nope.md",
                         "README.md: path not found: tools/gone.py"]
-
-
-def test_sync_never_blocks_private_paths():
-    for path in ["listings/x/offer.json", "raw_data/a.jpg", "account.json", ".env", "core/.env",
-                 ".agent/context/plan.md", "research/r.md", "tools/api-log.jsonl", "tokens.json"]:
-        assert sync.NEVER.search(path), path
-    for path in ["schemas/account.json", "account.example.json", ".env.example", "tools/ebay_api.py"]:
-        assert not sync.NEVER.search(path), path
-
-
-def test_sync_ledger_detects_stale_entry(tmp_path, monkeypatch, capsys):
-    src = tmp_path / "AGENTS.md"
-    src.write_text("text that changed\n", encoding="utf-8")
-    monkeypatch.setitem(sync.REWRITES, "core/AGENTS.md", [("old wording", "new")])
-    with pytest.raises(SystemExit) as exc:
-        sync.render(src, "core/AGENTS.md")
-    assert exc.value.code == 2

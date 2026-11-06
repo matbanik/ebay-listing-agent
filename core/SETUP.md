@@ -49,6 +49,7 @@ python tools/ebay_api.py setup               # writes account.json
   - `--create-location --location-key KEY --postal-code ZIP [--city --state --country] --confirm` creates an inventory location.
 - The `pipeline` section holds thresholds (price review gate, minimum confidence, fee rates). Edit them by hand; setup keeps your values. `account.example.json` shows the shape and `schemas/account.json` documents each key.
 - `EBAY_ACCOUNT_FILE=path` points the tools at a different file (a second account, or tests).
+- `EBAY_WORKSPACE=folder` moves all private data (`.env`, `account.json`, the token cache, `listings/`, `raw_data/`) to that folder, so the code can stay in a clean clone. It must be a real environment variable, not a line in `.env`.
 
 ## 4. Check
 

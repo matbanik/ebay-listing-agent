@@ -7,13 +7,31 @@ pipeline thresholds. `python tools/ebay_api.py setup` writes the file from the l
 account; account.example.json shows its shape.
 
 EBAY_ACCOUNT_FILE overrides the path (tests, or a second account).
+
+EBAY_WORKSPACE moves all private data (.env, account.json, the token cache,
+listings/ and raw_data/) to another folder, so the code can stay in a clean
+checkout. Without it, the workspace is the repo root.
 """
 
 import json
 import os
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+CODE_ROOT = Path(__file__).resolve().parent.parent
+
+
+def workspace_root():
+    """Folder holding .env, account.json, listings/ and raw_data/ (EBAY_WORKSPACE, else the repo root)."""
+    ws = os.environ.get("EBAY_WORKSPACE")
+    if not ws:
+        return CODE_ROOT
+    path = Path(ws).expanduser().resolve()
+    if not path.is_dir():
+        raise SystemExit(f"EBAY_WORKSPACE={ws} is not a folder")
+    return path
+
+
+ROOT = workspace_root()
 DEFAULT_ACCOUNT_FILE = ROOT / "account.json"
 
 # Fail-safe defaults; ADOPTION-QUESTIONS.md explains each one

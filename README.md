@@ -19,7 +19,7 @@ It talks to eBay's REST APIs through one Python script (`core/tools/ebay_api.py`
 | 3 | [ADOPTION-GUIDE.md](ADOPTION-GUIDE.md) | Copy `core/`, install, configure, validate the example, list your first item |
 | 4 | [core/MANIFEST.md](core/MANIFEST.md) | Every file in the package and what it does, plus what was left out on purpose |
 | 5 | [examples/](examples/) | One complete synthetic listing folder that passes the validator |
-| 6 | [UPDATE-CHECKLIST.md](UPDATE-CHECKLIST.md) | For maintainers: how the package is refreshed from the source repo and checked for private data |
+| 6 | [UPDATE-CHECKLIST.md](UPDATE-CHECKLIST.md) | For maintainers: release steps and the check for private data |
 
 ## Safety rules built in
 
@@ -52,7 +52,7 @@ These are in `core/AGENTS.md`, and the tools enforce them where they can:
 core/           the part you copy into your own repo (AGENTS.md, tools, skills, workflows, schemas, tests)
 examples/       a synthetic listing folder showing every pipeline artifact
 docs/           research prompts used while designing the pipeline (historical)
-scripts/        maintainer tools: sync from the source repo, privacy gate, reference check
+scripts/        maintainer tools: privacy gate, reference check, example generator
 ```
 
 ## License

@@ -15,6 +15,7 @@ Requirements:
 """
 
 import argparse
+import os
 import re
 import shutil
 import sys
@@ -31,8 +32,9 @@ IMAGE_EXTENSIONS = {'.jpg', '.jpeg', '.png', '.heic', '.heif', '.webp', '.bmp', 
 
 
 def get_project_root() -> Path:
-    """Get the project root directory (the repo root)."""
-    return Path(__file__).parent.parent
+    """Folder holding raw_data/ and listings/: EBAY_WORKSPACE if set, else the repo root."""
+    ws = os.environ.get("EBAY_WORKSPACE")
+    return Path(ws).expanduser().resolve() if ws else Path(__file__).parent.parent
 
 
 def slugify(name: str) -> str:

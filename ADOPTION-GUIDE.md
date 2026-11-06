@@ -90,8 +90,20 @@ mkdir -p backups/$(date +%F) && cp -r listings/old-item backups/$(date +%F)/
 
 If you use a notes or backup tool through MCP, put its name in that rule in `AGENTS.md` ("Always Do" and "Never Do") and in `01-import-workflow.md`.
 
-**Provider substitution: Pomera MCP.** The source repo used the Pomera notes MCP server (`pomera_notes`) for these backups. If you have it, the rule reads: "Save files to pomera notes before deletion". Without an MCP backup tool, keep the `backups/` default. Don't drop the rule.
+**Provider substitution: Pomera MCP.** The maintainer uses the Pomera notes MCP server (`pomera_notes`) for these backups. If you have it, the rule reads: "Save files to pomera notes before deletion". Without an MCP backup tool, keep the `backups/` default. Don't drop the rule.
 
 ## Updating later
 
 New versions of this package change files in `core/`. Compare them with your copy (`diff -r`) and merge by hand. Keep your `AGENTS.md` edits from step 6. Your `account.json`, `.env` and `listings/` are never part of the package, so an update can't overwrite them.
+
+## Alternative: run from a clone, data in a separate folder
+
+Instead of copying `core/`, you can keep a clone of this repository for the code and a separate private folder for your data. Set `EBAY_WORKSPACE` to that folder and every tool reads and writes `.env`, `account.json`, the token cache, `listings/` and `raw_data/` there:
+
+```bash
+export EBAY_WORKSPACE=~/my-ebay          # in Claude Code: "env" in that folder's .claude/settings.json
+cd ~/my-ebay
+python ~/ebay-listing-agent/core/tools/ebay_api.py setup --dry-run
+```
+
+Updating is then `git pull` in the clone. Your rule changes (step 6) go in a short `AGENTS.md` in the data folder that tells the agent to follow `core/AGENTS.md` with those differences. Never put the data folder inside the clone.

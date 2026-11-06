@@ -572,3 +572,14 @@ def test_setup_account_changes_need_confirm(tmp_path):
     assert run(client, "setup", "--opt-in", "--confirm") == 0
     body = json.loads(session.api_calls("POST")[0][2]["data"])
     assert body == {"programType": "SELLING_POLICY_MANAGEMENT"}
+
+
+def test_workspace_root(monkeypatch, tmp_path):
+    import account_config
+    monkeypatch.delenv("EBAY_WORKSPACE", raising=False)
+    assert account_config.workspace_root() == account_config.CODE_ROOT
+    monkeypatch.setenv("EBAY_WORKSPACE", str(tmp_path))
+    assert account_config.workspace_root() == tmp_path.resolve()
+    monkeypatch.setenv("EBAY_WORKSPACE", str(tmp_path / "missing"))
+    with pytest.raises(SystemExit):
+        account_config.workspace_root()
