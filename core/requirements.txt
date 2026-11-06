@@ -1,0 +1,17 @@
+# Python 3.10+. Install: python -m pip install -r requirements.txt
+# Also needed on PATH: ImageMagick 7 (`magick`) for tools/process_images.py
+
+# eBay API client (tools/ebay_api.py)
+requests>=2.31
+
+# Image pipeline and validation
+Pillow>=10.0
+jsonschema>=4.20
+
+# Redaction (tools/redact_text.py): OCR + blur
+rapidocr-onnxruntime>=1.2
+opencv-python>=4.8
+numpy>=1.24
+
+# Tests
+pytest>=7.4

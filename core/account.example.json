@@ -1,0 +1,24 @@
+{
+  "_comment": "Shape of account.json. Don't copy this by hand: run `python tools/ebay_api.py setup`, which reads your live policies and inventory location and writes account.json (gitignored). All IDs below are dummies.",
+  "seller": {
+    "marketplace": "EBAY_US",
+    "merchantLocationKey": "EXAMPLE-LOC-01",
+    "postalCode": "00000",
+    "country": "US"
+  },
+  "policies": {
+    "fulfillment": "100000000001",
+    "payment": "100000000002",
+    "return": "100000000003",
+    "return_14_day": "100000000004",
+    "disallowed_fulfillment": ["100000000005"]
+  },
+  "pipeline": {
+    "price_review_threshold": 200,
+    "min_confidence": 0.7,
+    "shipping_model": "free_baked_in",
+    "fvf_rate": 0.136,
+    "per_order_fee": 0.4,
+    "return_days_default": 30
+  }
+}

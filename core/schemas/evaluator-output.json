@@ -1,0 +1,376 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "EvaluatorOutput",
+    "description": "Typed contract: Evaluator agent → Lister agent. Validated identification, pricing, and listing specifications.",
+    "type": "object",
+    "required": [
+        "identification",
+        "pricing",
+        "condition",
+        "listing_specs",
+        "approval"
+    ],
+    "properties": {
+        "identification": {
+            "type": "object",
+            "required": [
+                "confirmed",
+                "title",
+                "category_id"
+            ],
+            "properties": {
+                "confirmed": {
+                    "type": "boolean",
+                    "description": "Whether Curator's ID was validated"
+                },
+                "ebay_product_id": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "ePID if matched in eBay catalog"
+                },
+                "title": {
+                    "type": "string",
+                    "maxLength": 80,
+                    "description": "SEO-optimized eBay title"
+                },
+                "category_id": {
+                    "type": "string",
+                    "description": "eBay leaf category ID"
+                },
+                "category_name": {
+                    "type": "string"
+                },
+                "brand": {
+                    "type": "string"
+                },
+                "model": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "upc": {
+                    "type": "string",
+                    "description": "'Does Not Apply' if no UPC"
+                },
+                "original_msrp": {
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "official_source_url": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            }
+        },
+        "pricing": {
+            "type": "object",
+            "required": [
+                "recommended_price",
+                "strategy",
+                "format"
+            ],
+            "properties": {
+                "recommended_price": {
+                    "type": "number"
+                },
+                "min_price": {
+                    "type": "number"
+                },
+                "max_price": {
+                    "type": "number"
+                },
+                "strategy": {
+                    "type": "string",
+                    "enum": [
+                        "COMPETITIVE",
+                        "PREMIUM_BEST_OFFER",
+                        "AUCTION",
+                        "SYSTEMATIC_DROPS"
+                    ]
+                },
+                "format": {
+                    "type": "string",
+                    "enum": [
+                        "FIXED_PRICE",
+                        "AUCTION"
+                    ]
+                },
+                "best_offer_enabled": {
+                    "type": "boolean"
+                },
+                "auto_decline_below": {
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "confidence": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                }
+            }
+        },
+        "comps": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer"
+                },
+                "median": {
+                    "type": "number"
+                },
+                "range": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                },
+                "data_freshness_days": {
+                    "type": "integer"
+                },
+                "source": {
+                    "type": "string"
+                },
+                "sell_through_rate": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "description": "Percentage, 0-100"
+                },
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "title": {
+                                "type": "string"
+                            },
+                            "price": {
+                                "type": "number"
+                            },
+                            "condition": {
+                                "type": "string"
+                            },
+                            "date": {
+                                "type": "string"
+                            },
+                            "type": {
+                                "type": "string",
+                                "enum": [
+                                    "BIN",
+                                    "AUCTION"
+                                ]
+                            },
+                            "url": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "condition": {
+            "type": "object",
+            "required": [
+                "final_grade",
+                "condition_id"
+            ],
+            "properties": {
+                "final_grade": {
+                    "type": "string",
+                    "description": "Inventory API ConditionEnum. Which values a category accepts: getItemConditionPolicies.",
+                    "enum": [
+                        "NEW",
+                        "LIKE_NEW",
+                        "NEW_OTHER",
+                        "NEW_WITH_DEFECTS",
+                        "CERTIFIED_REFURBISHED",
+                        "EXCELLENT_REFURBISHED",
+                        "VERY_GOOD_REFURBISHED",
+                        "GOOD_REFURBISHED",
+                        "SELLER_REFURBISHED",
+                        "USED_EXCELLENT",
+                        "USED_VERY_GOOD",
+                        "USED_GOOD",
+                        "USED_ACCEPTABLE",
+                        "PRE_OWNED_EXCELLENT",
+                        "PRE_OWNED_FAIR",
+                        "FOR_PARTS_OR_NOT_WORKING"
+                    ]
+                },
+                "condition_id": {
+                    "type": "integer",
+                    "description": "eBay numeric condition ID; must match final_grade (see tools/validate_payload.py CONDITION_IDS)",
+                    "enum": [
+                        1000,
+                        1500,
+                        1750,
+                        2000,
+                        2010,
+                        2020,
+                        2030,
+                        2500,
+                        2750,
+                        2990,
+                        3000,
+                        3010,
+                        4000,
+                        5000,
+                        6000,
+                        7000
+                    ]
+                },
+                "changed_from_curator": {
+                    "type": "boolean"
+                },
+                "change_reason": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "condition_description": {
+                    "type": "string",
+                    "description": "Free text for conditionDescription field"
+                },
+                "tested_by_human": {
+                    "type": "boolean",
+                    "description": "True only when the seller has confirmed they powered on / tested the item. Without it, listing text must not claim 'tested' or 'working'."
+                }
+            }
+        },
+        "listing_specs": {
+            "type": "object",
+            "required": [
+                "description_html",
+                "item_specifics"
+            ],
+            "properties": {
+                "description_html": {
+                    "type": "string",
+                    "description": "Mobile-optimized HTML listing description"
+                },
+                "item_specifics": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "minItems": 1
+                            }
+                        ]
+                    },
+                    "description": "Key-value pairs for eBay item aspects"
+                },
+                "shipping_recommendation": {
+                    "type": "string",
+                    "enum": [
+                        "FREE_DOMESTIC",
+                        "CALCULATED",
+                        "FLAT_RATE"
+                    ]
+                },
+                "return_policy": {
+                    "type": "string",
+                    "enum": [
+                        "14_DAY_BUYER_PAYS",
+                        "30_DAY_BUYER_PAYS",
+                        "30_DAY_FREE",
+                        "60_DAY_BUYER_PAYS",
+                        "NO_RETURNS"
+                    ],
+                    "description": "Must match the returnPolicyId the Lister uses (account.json policies.return = 30-day buyer pays; policies.return_14_day = 14-day, only in categories that allow it)"
+                },
+                "duration": {
+                    "type": "string",
+                    "enum": [
+                        "GTC",
+                        "DAYS_3",
+                        "DAYS_5",
+                        "DAYS_7",
+                        "DAYS_10"
+                    ]
+                }
+            }
+        },
+        "shipping": {
+            "type": "object",
+            "description": "Shipping estimate used to bake shipping into a free-shipping price",
+            "properties": {
+                "estimatedWeightLb": {
+                    "type": "number",
+                    "minimum": 0
+                },
+                "estimatedServiceCost": {
+                    "type": "number",
+                    "minimum": 0
+                },
+                "estimationSource": {
+                    "type": "string"
+                },
+                "notes": {
+                    "type": "string"
+                }
+            }
+        },
+        "approval": {
+            "type": "object",
+            "required": [
+                "auto_listable",
+                "requires_human_review"
+            ],
+            "properties": {
+                "auto_listable": {
+                    "type": "boolean",
+                    "description": "True if all confidence scores >= 0.70 and no flags"
+                },
+                "requires_human_review": {
+                    "type": "boolean"
+                },
+                "review_reasons": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "overall_quality_score": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                }
+            }
+        },
+        "metadata": {
+            "type": "object",
+            "properties": {
+                "evaluator_timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "slug": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

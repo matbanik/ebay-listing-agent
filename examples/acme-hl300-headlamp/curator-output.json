@@ -1,0 +1,59 @@
+{
+  "product": {
+    "category": "Sporting Goods > Camping & Hiking > Flashlights, Lanterns & Lights > Headlamps",
+    "type": "LED Headlamp",
+    "brand": "Acme",
+    "model": "HL300",
+    "mpn": "HL300-BK",
+    "upc": null,
+    "color": "Black",
+    "material": "ABS housing, elastic strap",
+    "key_features": [
+      "300 lumen white LED",
+      "Red light mode",
+      "USB-C rechargeable",
+      "Tilting head"
+    ],
+    "visible_text": [
+      "ACME",
+      "HL300",
+      "USB-C"
+    ],
+    "identification_confidence": 0.9,
+    "identification_method": "model_visible"
+  },
+  "condition": {
+    "grade": "USED_EXCELLENT",
+    "condition_id": 3000,
+    "confidence": 0.8,
+    "tested_by_human": false,
+    "notes": "Pre-owned. The lens is clear with no visible cracks. The strap is clean and still elastic. The housing has light scuffs on the top edge. Not tested by the seller. Condition assessed from photos only.",
+    "defects": [
+      "Light scuffs on the top edge of the housing"
+    ]
+  },
+  "images": {
+    "processed_paths": [
+      "acme-hl300-headlamp-01.jpg",
+      "acme-hl300-headlamp-02.jpg"
+    ],
+    "hero_index": 0,
+    "quality_scores": [
+      182.4,
+      164.0
+    ],
+    "rejected": []
+  },
+  "metadata": {
+    "curator_timestamp": "2026-11-06T12:00:00Z",
+    "slug": "acme-hl300-headlamp",
+    "model_used": "example",
+    "requires_human_review": false,
+    "review_reasons": []
+  },
+  "suggested_title": "Acme HL300 LED Headlamp 300 Lumen USB-C Rechargeable Red Light Black Used",
+  "additional_photos_needed": [
+    "Charging port close-up",
+    "Lamp lit (if the seller can test it)"
+  ]
+}

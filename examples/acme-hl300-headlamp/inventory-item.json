@@ -1,0 +1,50 @@
+{
+  "product": {
+    "title": "Acme HL300 LED Headlamp 300 Lumen USB-C Rechargeable Red Light Black Used",
+    "description": "<div style='font-family:Arial,Helvetica,sans-serif;max-width:800px;margin:0 auto;padding:0 12px;font-size:16px;line-height:1.5;color:#222'><h2 style='font-size:22px;margin:8px 0'>Acme HL300 Rechargeable LED Headlamp, Black</h2><p>Pre-owned <strong>Acme HL300</strong> headlamp with white and red LED modes and a built-in USB-C battery.</p><h3 style='font-size:18px;margin:18px 0 6px'>Specifications</h3><ul style='padding-left:20px;margin:0'><li style='margin:3px 0'>Output: up to 300 lumens (manufacturer rating)</li><li style='margin:3px 0'>Modes: high, low, red, strobe</li><li style='margin:3px 0'>Charging: USB-C (cable not included)</li><li style='margin:3px 0'>Water resistance: IPX4 (manufacturer rating)</li><li style='margin:3px 0'>Tilting lamp head, adjustable elastic strap</li></ul><h3 style='font-size:18px;margin:18px 0 6px'>What's Included</h3><ul style='padding-left:20px;margin:0'><li style='margin:3px 0'>Headlamp with strap</li><li style='margin:3px 0'>No box, cable or paperwork. Only the items pictured are included</li></ul><h3 style='font-size:18px;margin:18px 0 6px'>Condition</h3><p>Pre-owned. The lens is clear with no visible cracks. The strap is clean and still elastic. The housing has light scuffs on the top edge. Not tested by the seller. <em>Condition assessed from photos only.</em></p></div>",
+    "aspects": {
+      "Brand": [
+        "Acme"
+      ],
+      "Model": [
+        "HL300"
+      ],
+      "MPN": [
+        "HL300-BK"
+      ],
+      "Type": [
+        "Headlamp"
+      ],
+      "Power Source": [
+        "USB"
+      ],
+      "Lighting Technology": [
+        "LED"
+      ],
+      "Color": [
+        "Black"
+      ],
+      "Material": [
+        "ABS"
+      ],
+      "Features": [
+        "Rechargeable",
+        "Waterproof"
+      ]
+    },
+    "upc": [
+      "Does Not Apply"
+    ],
+    "imageUrls": [
+      "https://i.ebayimg.com/images/g/EXAMPLE01/s-l1600.jpg",
+      "https://i.ebayimg.com/images/g/EXAMPLE02/s-l1600.jpg"
+    ]
+  },
+  "condition": "USED_EXCELLENT",
+  "conditionDescription": "Pre-owned. The lens is clear with no visible cracks. The strap is clean and still elastic. The housing has light scuffs on the top edge. Not tested by the seller. Condition assessed from photos only.",
+  "availability": {
+    "shipToLocationAvailability": {
+      "quantity": 1
+    }
+  }
+}

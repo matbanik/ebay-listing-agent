@@ -1,0 +1,13 @@
+# Private deny-list for scripts/sanitize.py (holds the strings it must never find)
+scrub.local.txt
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Anything that slips in while testing the package inside core/
+core/.env
+core/account.json
+core/tokens.json
+core/**/api-log.jsonl

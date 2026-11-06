@@ -1,0 +1,123 @@
+{
+  "identification": {
+    "confirmed": true,
+    "ebay_product_id": null,
+    "title": "Acme HL300 LED Headlamp 300 Lumen USB-C Rechargeable Red Light Black Used",
+    "category_id": "106984",
+    "category_name": "Sporting Goods > Camping & Hiking > Flashlights, Lanterns & Lights > Headlamps",
+    "brand": "Acme",
+    "model": "HL300",
+    "original_msrp": 39.99,
+    "official_source_url": "https://example.com/acme-hl300",
+    "upc": "Does Not Apply"
+  },
+  "pricing": {
+    "recommended_price": 24.99,
+    "min_price": 21.99,
+    "max_price": 27.99,
+    "strategy": "COMPETITIVE",
+    "format": "FIXED_PRICE",
+    "best_offer_enabled": true,
+    "auto_decline_below": 20.0,
+    "confidence": 0.75
+  },
+  "comps": {
+    "count": 5,
+    "median": 23.5,
+    "range": [
+      18.0,
+      29.0
+    ],
+    "data_freshness_days": 90,
+    "source": "Example data (invented). Real runs use eBay sold search or Terapeak; prices are delivered (item + shipping)",
+    "sell_through_rate": null,
+    "items": [
+      {
+        "title": "Acme HL300 Headlamp Black",
+        "price": 18.0,
+        "condition": "Used, worn strap",
+        "date": "2026-10-02",
+        "type": "AUCTION",
+        "url": "https://example.com/sold/1"
+      },
+      {
+        "title": "Acme HL300 LED Headlamp USB-C",
+        "price": 22.0,
+        "condition": "Used",
+        "date": "2026-10-11",
+        "type": "BIN",
+        "url": "https://example.com/sold/2"
+      },
+      {
+        "title": "ACME HL300 300lm Headlamp",
+        "price": 23.5,
+        "condition": "Used",
+        "date": "2026-10-20",
+        "type": "BIN",
+        "url": "https://example.com/sold/3"
+      },
+      {
+        "title": "Acme HL300 Rechargeable Headlamp + Cable",
+        "price": 26.0,
+        "condition": "Used, with cable",
+        "date": "2026-10-28",
+        "type": "BIN",
+        "url": "https://example.com/sold/4"
+      },
+      {
+        "title": "Acme HL300 Headlamp Open Box",
+        "price": 29.0,
+        "condition": "New other",
+        "date": "2026-11-01",
+        "type": "BIN",
+        "url": "https://example.com/sold/5"
+      }
+    ]
+  },
+  "condition": {
+    "final_grade": "USED_EXCELLENT",
+    "condition_id": 3000,
+    "changed_from_curator": false,
+    "change_reason": null,
+    "condition_description": "Pre-owned. The lens is clear with no visible cracks. The strap is clean and still elastic. The housing has light scuffs on the top edge. Not tested by the seller. Condition assessed from photos only.",
+    "tested_by_human": false
+  },
+  "listing_specs": {
+    "description_html": "<div style='font-family:Arial,Helvetica,sans-serif;max-width:800px;margin:0 auto;padding:0 12px;font-size:16px;line-height:1.5;color:#222'><h2 style='font-size:22px;margin:8px 0'>Acme HL300 Rechargeable LED Headlamp, Black</h2><p>Pre-owned <strong>Acme HL300</strong> headlamp with white and red LED modes and a built-in USB-C battery.</p><h3 style='font-size:18px;margin:18px 0 6px'>Specifications</h3><ul style='padding-left:20px;margin:0'><li style='margin:3px 0'>Output: up to 300 lumens (manufacturer rating)</li><li style='margin:3px 0'>Modes: high, low, red, strobe</li><li style='margin:3px 0'>Charging: USB-C (cable not included)</li><li style='margin:3px 0'>Water resistance: IPX4 (manufacturer rating)</li><li style='margin:3px 0'>Tilting lamp head, adjustable elastic strap</li></ul><h3 style='font-size:18px;margin:18px 0 6px'>What's Included</h3><ul style='padding-left:20px;margin:0'><li style='margin:3px 0'>Headlamp with strap</li><li style='margin:3px 0'>No box, cable or paperwork. Only the items pictured are included</li></ul><h3 style='font-size:18px;margin:18px 0 6px'>Condition</h3><p>Pre-owned. The lens is clear with no visible cracks. The strap is clean and still elastic. The housing has light scuffs on the top edge. Not tested by the seller. <em>Condition assessed from photos only.</em></p></div>",
+    "item_specifics": {
+      "Brand": "Acme",
+      "Model": "HL300",
+      "MPN": "HL300-BK",
+      "Type": "Headlamp",
+      "Power Source": "USB",
+      "Lighting Technology": "LED",
+      "Color": "Black",
+      "Material": "ABS",
+      "Features": [
+        "Rechargeable",
+        "Waterproof"
+      ]
+    },
+    "shipping_recommendation": "FREE_DOMESTIC",
+    "return_policy": "30_DAY_BUYER_PAYS",
+    "duration": "GTC"
+  },
+  "shipping": {
+    "estimatedWeightLb": 0.5,
+    "estimatedServiceCost": 5.0,
+    "estimationSource": "Headlamp ~3 oz packed in a small padded mailer, under 8 oz; USPS Ground Advantage",
+    "notes": "Price includes the shipping estimate (free shipping, cost baked in)."
+  },
+  "approval": {
+    "auto_listable": false,
+    "requires_human_review": true,
+    "review_reasons": [
+      "Publishing needs explicit human approval"
+    ],
+    "overall_quality_score": 0.8
+  },
+  "metadata": {
+    "evaluator_timestamp": "2026-11-06T12:30:00Z",
+    "slug": "acme-hl300-headlamp"
+  }
+}

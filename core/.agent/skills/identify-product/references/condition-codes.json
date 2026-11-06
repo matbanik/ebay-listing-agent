@@ -1,0 +1,71 @@
+{
+    "description": "eBay condition IDs by category type. 'enum' is the Inventory API ConditionEnum value to send in createOrReplaceInventoryItem; 'label' is what buyers see in that category. The same ID can display differently per category (3000 is 'Used' in electronics, 'Pre-owned - Good' in clothing). Categories accept different subsets: ALWAYS confirm with getItemConditionPolicies for the target category.",
+    "categories": {
+        "electronics": {
+            "label": "Electronics / Hard Goods (Default)",
+            "note": "Many electronics categories accept only 3000 (Used) for used items, not 4000-6000. Check the category policy before choosing a finer grade.",
+            "codes": [
+                { "id": 1000, "enum": "NEW", "label": "New" },
+                { "id": 1500, "enum": "NEW_OTHER", "label": "Open box / New (other)" },
+                { "id": 1750, "enum": "NEW_WITH_DEFECTS", "label": "New with defects" },
+                { "id": 2000, "enum": "CERTIFIED_REFURBISHED", "label": "Certified - Refurbished" },
+                { "id": 2010, "enum": "EXCELLENT_REFURBISHED", "label": "Excellent - Refurbished" },
+                { "id": 2020, "enum": "VERY_GOOD_REFURBISHED", "label": "Very Good - Refurbished" },
+                { "id": 2030, "enum": "GOOD_REFURBISHED", "label": "Good - Refurbished" },
+                { "id": 2500, "enum": "SELLER_REFURBISHED", "label": "Seller refurbished" },
+                { "id": 2750, "enum": "LIKE_NEW", "label": "Like New" },
+                { "id": 3000, "enum": "USED_EXCELLENT", "label": "Used" },
+                { "id": 4000, "enum": "USED_VERY_GOOD", "label": "Very Good" },
+                { "id": 5000, "enum": "USED_GOOD", "label": "Good" },
+                { "id": 6000, "enum": "USED_ACCEPTABLE", "label": "Acceptable" },
+                { "id": 7000, "enum": "FOR_PARTS_OR_NOT_WORKING", "label": "For parts or not working" }
+            ]
+        },
+        "clothing": {
+            "label": "Clothing, Shoes & Accessories",
+            "note": "New-with-tags vs new-without-tags is expressed through the category's own labels for 1000/1500, not through separate enum values.",
+            "codes": [
+                { "id": 1000, "enum": "NEW", "label": "New with tags" },
+                { "id": 1500, "enum": "NEW_OTHER", "label": "New without tags" },
+                { "id": 1750, "enum": "NEW_WITH_DEFECTS", "label": "New with defects" },
+                { "id": 2990, "enum": "PRE_OWNED_EXCELLENT", "label": "Pre-owned - Excellent" },
+                { "id": 3000, "enum": "USED_EXCELLENT", "label": "Pre-owned - Good" },
+                { "id": 3010, "enum": "PRE_OWNED_FAIR", "label": "Pre-owned - Fair" }
+            ]
+        },
+        "books": {
+            "label": "Books & Media",
+            "codes": [
+                { "id": 1000, "enum": "NEW", "label": "Brand New" },
+                { "id": 2750, "enum": "LIKE_NEW", "label": "Like New" },
+                { "id": 4000, "enum": "USED_VERY_GOOD", "label": "Very Good" },
+                { "id": 5000, "enum": "USED_GOOD", "label": "Good" },
+                { "id": 6000, "enum": "USED_ACCEPTABLE", "label": "Acceptable" }
+            ]
+        },
+        "collectibles": {
+            "label": "Collectibles & Art",
+            "note": "Condition can create 10x price differences. Grade very conservatively.",
+            "codes": [
+                { "id": 1000, "enum": "NEW", "label": "New" },
+                { "id": 1500, "enum": "NEW_OTHER", "label": "New (other)" },
+                { "id": 2750, "enum": "LIKE_NEW", "label": "Like New" },
+                { "id": 3000, "enum": "USED_EXCELLENT", "label": "Used" },
+                { "id": 4000, "enum": "USED_VERY_GOOD", "label": "Very Good" },
+                { "id": 5000, "enum": "USED_GOOD", "label": "Good" },
+                { "id": 6000, "enum": "USED_ACCEPTABLE", "label": "Acceptable" }
+            ]
+        }
+    },
+    "grade_down_map": {
+        "description": "When uncertain, map ONCE to the next lower grade the category accepts. Applied by the Curator only; the Evaluator does not grade down again.",
+        "NEW": "NEW_OTHER",
+        "NEW_OTHER": "LIKE_NEW",
+        "LIKE_NEW": "USED_EXCELLENT",
+        "USED_EXCELLENT": "USED_VERY_GOOD",
+        "USED_VERY_GOOD": "USED_GOOD",
+        "USED_GOOD": "USED_ACCEPTABLE",
+        "PRE_OWNED_EXCELLENT": "USED_EXCELLENT",
+        "USED_EXCELLENT (clothing)": "PRE_OWNED_FAIR"
+    }
+}

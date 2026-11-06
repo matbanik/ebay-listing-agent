@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "account.json",
+  "title": "Seller account settings",
+  "description": "Per-seller settings read by tools/ebay_api.py and tools/validate_payload.py. Written by `python tools/ebay_api.py setup`; gitignored because the IDs identify the seller.",
+  "type": "object",
+  "required": ["seller", "policies"],
+  "properties": {
+    "_comment": {"type": "string"},
+    "seller": {
+      "type": "object",
+      "required": ["marketplace", "merchantLocationKey"],
+      "properties": {
+        "marketplace": {"type": "string", "description": "eBay marketplace ID, e.g. EBAY_US (the only one tested)"},
+        "merchantLocationKey": {"type": ["string", "null"], "description": "Inventory location every offer ships from"},
+        "postalCode": {"type": ["string", "null"]},
+        "country": {"type": ["string", "null"], "description": "ISO 3166 two-letter code"}
+      }
+    },
+    "policies": {
+      "type": "object",
+      "required": ["fulfillment", "payment", "return"],
+      "properties": {
+        "fulfillment": {"type": ["string", "null"], "description": "Default fulfillment (shipping) policy ID"},
+        "payment": {"type": ["string", "null"], "description": "Default payment policy ID"},
+        "return": {"type": ["string", "null"], "description": "Default return policy ID (30-day, buyer pays)"},
+        "return_14_day": {"type": ["string", "null"], "description": "14-day return policy; only a few categories accept it"},
+        "disallowed_fulfillment": {
+          "type": "array", "items": {"type": "string"},
+          "description": "Fulfillment policies the validator refuses (e.g. calculated shipping that causes package errors)"
+        }
+      }
+    },
+    "pipeline": {
+      "type": "object",
+      "description": "Thresholds; missing keys take the defaults in tools/account_config.py",
+      "properties": {
+        "price_review_threshold": {"type": "number", "description": "USD; offers above this need human review"},
+        "min_confidence": {"type": "number", "minimum": 0, "maximum": 1},
+        "shipping_model": {"type": "string", "enum": ["free_baked_in"]},
+        "fvf_rate": {"type": "number", "description": "Final value fee rate used for net-proceeds estimates"},
+        "per_order_fee": {"type": "number"},
+        "return_days_default": {"type": "integer", "enum": [14, 30, 60]}
+      }
+    }
+  }
+}

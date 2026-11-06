@@ -1,0 +1,27 @@
+# Credentials and seller settings (never commit)
+.env
+tokens.json
+*.token
+.ebay-token-cache.json
+/account.json
+
+# Phone photos carry GPS and other EXIF: keep raw input out of git
+raw_data/**
+!raw_data/.gitkeep
+
+# Listing folders hold your seller data, offer IDs and photos. Commit them only to a
+# private repo, and only after reading SECURITY.md
+listings/**
+!listings/.gitkeep
+!listings/archive/
+!listings/archive/.gitkeep
+
+# Backups made before deleting files
+backups/**
+!backups/.gitkeep
+
+# Per-listing API call log written by tools/ebay_api.py
+api-log.jsonl
+
+__pycache__/
+.pytest_cache/

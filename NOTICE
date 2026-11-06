@@ -1,0 +1,18 @@
+eBay Listing Agent
+Copyright (c) 2026 MatBanik. MIT License (see LICENSE).
+
+Credits
+
+- ebay-mcp by YosefHayim (https://github.com/YosefHayim/ebay-mcp), MIT License.
+  The pipeline used this MCP server for its eBay calls before tools/ebay_api.py
+  replaced it. Its tool set and documentation informed which API calls the
+  pipeline makes and how its OAuth setup works. No code from it is included here.
+
+Trademarks
+
+eBay is a trademark of eBay Inc. This project is not affiliated with, endorsed
+by or sponsored by eBay Inc. Use of the eBay APIs is governed by the eBay API
+License Agreement, which each user accepts when joining the eBay Developers Program.
+
+Third-party Python packages listed in core/requirements.txt are installed
+separately and are covered by their own licenses.
